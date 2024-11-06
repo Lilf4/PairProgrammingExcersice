@@ -60,29 +60,13 @@ namespace LinkedListProject
 				var currElement = first;
 				for (int i = 0; i < Count - 1; i++)
 				{
-					var realLast = i == 0 ? null : currElement;
-					var realCurrent = realLast != null ? currElement.next : currElement;
-					var realNext = realCurrent.next;
-
-					if (realNext != null && realCurrent.data > realNext.data)
+					if (currElement.data > currElement.next.data)
 					{
-						//
-						realCurrent.next = new Element(realNext.next);
-						realNext.next = new Element(realCurrent);
-						if (realLast == null)
-						{
-							first = new Element(realNext);
-						}
-						else
-						{
-							realLast.next = new Element(realNext);
-						}
+						var temp = currElement.data;
+						currElement.data = currElement.next.data;
+						currElement.next.data = temp;
 					}
-					//if (currElement.next != null) { break; }
-					if (realLast != null)
-					{
-						currElement = currElement.next;
-					}
+					currElement = currElement.next;
 				}
 			}
 		}

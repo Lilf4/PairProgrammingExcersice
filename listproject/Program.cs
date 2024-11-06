@@ -1,2 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using LinkedListProject;
+var list = new LinkedList();
+list.addFirst(6);
+list.addFirst(5);
+list.addFirst(4);
+list.addFirst(3);
+list.addFirst(2);
+list.addFirst(9);
+list.Sort();
+Console.WriteLine();
