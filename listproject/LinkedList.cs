@@ -14,7 +14,7 @@ namespace LinkedListProject{
 		}
 
 		public void removeFirst(){
-			first = null;
+			first = first.next;
 		}
 	}
 

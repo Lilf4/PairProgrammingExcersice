@@ -47,4 +47,17 @@ public class UnitTest1
 		list.removeFirst();
 		Assert.Null(list.first);
 	}
+	[Fact]
+	public void AddTwoRemoveOneElement(){
+		var list = new LinkedList();
+		list.addFirst(3);
+		list.addFirst(7);
+
+		Assert.Equal(7, list.first.data);
+
+		list.removeFirst();
+
+		Assert.Equal(3, list.first.data);
+		Assert.Null(list.first.next);
+	}
 }
