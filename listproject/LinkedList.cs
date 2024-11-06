@@ -31,34 +31,71 @@ namespace LinkedListProject
 		{
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.Append("LinkedList: ");
-			if(first != null){
+			if (first != null)
+			{
 				var currElement = first;
-				for(int i = 0; i < Count; i++){
+				for (int i = 0; i < Count; i++)
+				{
 					stringBuilder.Append(currElement.data.ToString());
-					if (currElement.next != null){
+					if (currElement.next != null)
+					{
 						stringBuilder.Append(", ");
 						currElement = currElement.next;
 					}
 				}
 			}
-			else{
+			else
+			{
 				stringBuilder.Append("Empty");
 			}
 			return stringBuilder.ToString();
 		}
 
-		public void Sort(){
-			if(IsSorted()) return;
-
+		public void Sort()
+		{
+			if (IsSorted()) return;
 			
+			while (!IsSorted())
+			{
+				var currElement = first;
+				for (int i = 0; i < Count - 1; i++)
+				{
+					var realLast = i == 0 ? null : currElement;
+					var realCurrent = realLast != null ? currElement.next : currElement;
+					var realNext = realCurrent.next;
+
+					if (realNext != null && realCurrent.data > realNext.data)
+					{
+						//
+						realCurrent.next = new Element(realNext.next);
+						realNext.next = new Element(realCurrent);
+						if (realLast == null)
+						{
+							first = new Element(realNext);
+						}
+						else
+						{
+							realLast.next = new Element(realNext);
+						}
+					}
+					//if (currElement.next != null) { break; }
+					if (realLast != null)
+					{
+						currElement = currElement.next;
+					}
+				}
+			}
 		}
 
-		public bool IsSorted(){
-			if(first == null) return true;
+		public bool IsSorted()
+		{
+			if (first == null) return true;
 			var currElement = first;
-			for(int i = 0; i < Count; i++){
-				if(currElement.next == null) return true;
-				if(currElement.data > currElement.next.data){
+			for (int i = 0; i < Count; i++)
+			{
+				if (currElement.next == null) return true;
+				if (currElement.data > currElement.next.data)
+				{
 					return false;
 				}
 				currElement = currElement.next;

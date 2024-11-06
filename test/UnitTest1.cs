@@ -121,14 +121,19 @@ public class UnitTest1
 		Assert.True(list.IsSorted());
 	}
 
-	[Fact]
-	public void LLSort(){
+	[Theory]
+	[InlineData(new int[]{1, 2, 3, 4, 5, 6})]
+	[InlineData(new int[]{1, 2, 3, 4, 8, 6})]
+	[InlineData(new int[]{9, 2, 3, 4, 5, 6})]
+	[InlineData(new int[]{1, 2, 3, 7, 5, 6})]
+	[InlineData(new int[]{3, 3, 3, 3, 3, 3})]
+	public void LLSort(int[] array){
 		var list = new LinkedList();
-		list.addFirst(5);
-		list.addFirst(2);
-		list.addFirst(9);
-		list.addFirst(1);
-		list.addFirst(4);
+
+		//Console.WriteLine(array);
+		for(int i = array.Length - 1; i>-1; i--){
+			list.addFirst(array[i]);
+		}
 		list.Sort();
 		Assert.True(list.IsSorted());
 	}
