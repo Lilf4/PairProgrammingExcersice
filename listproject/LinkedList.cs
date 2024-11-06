@@ -3,6 +3,9 @@ using System.Linq.Expressions;
 namespace LinkedListProject{
 	public class LinkedList{
 		public Element? first;
+
+		public int Count {get{return count;}}
+		private int count = 0;
 		public void addFirst(int num){
 			var new_element = new Element(num);
 
@@ -11,10 +14,12 @@ namespace LinkedListProject{
 			}
 
 			first = new_element;
+			count++;
 		}
 
 		public void removeFirst(){
 			first = first.next;
+			count--;
 		}
 	}
 

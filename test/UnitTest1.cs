@@ -1,4 +1,7 @@
 namespace test;
+
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using LinkedListProject;
 
 public class UnitTest1
@@ -59,5 +62,24 @@ public class UnitTest1
 
 		Assert.Equal(3, list.first.data);
 		Assert.Null(list.first.next);
+	}
+
+	[Fact]
+	public void AddingToCount(){
+		var list = new LinkedList();
+		Assert.Equal(0,list.Count);
+		list.addFirst(2);
+		Assert.Equal(1,list.Count);
+	}
+	
+	[Fact]
+	public void RemovingFromCount(){
+		var list = new LinkedList();
+		list.addFirst(2);
+		list.addFirst(5);
+
+		list.removeFirst();
+
+		Assert.Equal(1,list.Count);
 	}
 }
